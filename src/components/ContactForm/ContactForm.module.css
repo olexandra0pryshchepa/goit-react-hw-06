@@ -1,0 +1,10 @@
+
+.submitBtn{
+    display: flex;
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(108, 108, 219);
+    border: 1px;
+    border-radius: 4px;
+    padding: 7px;
+}
