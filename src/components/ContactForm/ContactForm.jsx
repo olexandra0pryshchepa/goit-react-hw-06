@@ -10,7 +10,7 @@ export default function ContactForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addContact(name, number));
+    dispatch(addContact({ name, number }));
     setName("");
     setNumber("");
   };
@@ -40,7 +40,7 @@ export default function ContactForm() {
           type="tel"
           name="number"
           required
-          pattern="^\+?\d{1,4}[ .\-]?\(?\d{1,3}\)?[ .\-]?\d{1,4}[ .\-]?\d{1,4}[ .\-]?\d{1,9}$"
+          pattern="^\+?\d{1,4}[ .\-]?\(?\d{1,3}\)?[ .\-]?\d{1,4}[ .\-]?\d{1,9}$"
           title="Format: XXX-XXX-XX-XX"
           value={number}
           onChange={handleChange}

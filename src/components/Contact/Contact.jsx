@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import css from "./ContactItem.module.css";
 
-export default function ContactItem ({ contact, handleDeleteContact }) {
+export default function Contact({ contact, handleDeleteContact }) {
   const { name, number, id } = contact;
 
   return (
@@ -22,7 +22,7 @@ export default function ContactItem ({ contact, handleDeleteContact }) {
   );
 };
 
-ContactItem.propTypes = {
+Contact.propTypes = {
   contact: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
