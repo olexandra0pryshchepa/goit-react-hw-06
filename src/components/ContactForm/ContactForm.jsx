@@ -1,15 +1,34 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addContact, selectContacts } from "../../redux/contactsSlice";
 import css from "./ContactForm.module.css";
+
 
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const normalizedNewName = name.toLowerCase();
+    const normalizedNewNumber = number.toLowerCase();
+
+    const hasDuplicates = contacts.some(
+      (contact) =>
+        (typeof contact.name === "string" &&
+          contact.name.toLowerCase() === normalizedNewName) ||
+        (typeof contact.number === "string" &&
+          contact.number.toLowerCase() === normalizedNewNumber)
+    );
+
+    if (hasDuplicates) {
+      alert("This contact already exists!");
+      return;
+    }
+
     dispatch(addContact({ name, number }));
     setName("");
     setNumber("");
